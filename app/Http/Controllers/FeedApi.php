@@ -97,12 +97,12 @@ class FeedApi extends Controller
             return response()->json([
                 'status' => 500,
                 'message' => 'fail',
-                'data' => $v->errors(),
+                'data' => $v->errors()
             ]);
         }
 
         $feed_id = \request()->feed_id;
-        $comment = Comment::where('feed_id',$feed_id)->with('user')->paginate(10);
+        $comment = Comment::where('feed_id', $feed_id)->with('user')->paginate(10);
         return response()->json([
             'status' => 200,
             'message' => 'successfully',
